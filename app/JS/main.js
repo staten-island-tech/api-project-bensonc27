@@ -1,9 +1,9 @@
-import "./style.css";
+import "../CSS/style.css";
 
 async function getData() {
-  //fetch returns a promise
   try {
-    const response = await fetch("https://api.clashroyale.com/v1/pekka");
+    const response = await fetch("/api/digimon/name/agumon");
+
     if (response.status != 200) {
       throw new Error(response);
     } else {
@@ -12,7 +12,7 @@ async function getData() {
     }
   } catch (error) {
     console.log(error);
-    alert("sorry could not find that ");
+    alert("sorry could not find that");
   }
 }
 getData();
