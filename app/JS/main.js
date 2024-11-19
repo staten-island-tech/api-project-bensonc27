@@ -2,7 +2,7 @@ import "../CSS/style.css";
 
 async function getData() {
   try {
-    const response = await fetch("/api/digimon/name/agumon");
+    const response = await fetch("https://mhw-db.com/monsters/16");
 
     if (response.status != 200) {
       throw new Error(response);
