@@ -2,14 +2,16 @@ import "../CSS/style.css";
 
 async function getData() {
   try {
-    const response = await fetch("https://valorant-api.com/v1/agents");
+    const response = await fetch(
+      "https://dattebayo-api.onrender.com/characters"
+    );
 
     if (response.status != 200) {
       throw new Error(response);
     } else {
       const data = await response.json();
-      console.log(data);
-      createCards(data);
+      console.log(data.data);
+      createCards(data.data);
     }
   } catch (error) {
     console.log(error);
@@ -26,33 +28,18 @@ const DomSelectors = {
 function createCards(data) {
   DomSelectors.container.innerHTML = "";
 
-  data.forEach((monster) => {
+  data.forEach((character) => {
     const CardHTML = `<div class = card>
-        <h1 class = "name"> Agent: ${displayName.name} </h1>
-        <img class = "picture" src="${monster.image_url}">
-        <h2 class = "species"> Species: ${monster.species} </h2>
-        <h2 class = "type"> Type: ${monster.type} </h2>
-        <h2 class = "elements"> Elements: ${monster.elements} </h2>
-
-        <p class = "location"> Locations: ${monster.locations.name} </p>
-        <p class = "disease"> Ailments: ${monster.ailments} </p>
-        <p class = "reward"> Drops: ${monster.rewards} </p>
-        <p class = "desc"> ${.description} </p>
+        <h1 class = "name"> Character: ${character.name} </h1>
+        <img class = "picture" src="${character.image_url}">
+        <h2 class = "clan"> Clan: ${character.clan} </h2>
+        <h2 class = "tailedBeasts"> Beasts: ${character.tailedBeast} </h2>
+        <h2 class = "nature"> Nature: ${character.nature} </h2>
+        <p class = "kekkeiGenkai"> KekkiGenkai: ${character.kekkeiGenkai} </p>
+        <p class = "class"> Class: ${character.classification} </p>
+        <p class = "occupation"> Occupation: ${character.occupation} </p>
+        <p tools = "tools"> Tools: ${character.tools} </p>
         </div>`;
     DomSelectors.container.insertAdjacentHTML("beforeend", CardHTML);
-
-    monster.resistances.forEach((resistance) => {
-      DomSelectors.container.insertAdjacentHTML(
-        "beforeend",
-        `<p class="resistance">Resistances: ${resistance.element} </p>`
-      );
-    });
-
-    monster.weaknesses.forEach((weakness) => {
-      DomSelectors.container.insertAdjacentHTML(
-        "beforeend",
-        `<p class="weakness">Weakness: ${weakness.element} </p>`
-      );
-    });
   });
 }
