@@ -10,8 +10,8 @@ async function getData() {
       throw new Error(response);
     } else {
       const data = await response.json();
-      console.log(data.data);
-      createCards(data.data);
+      console.log(data);
+      createCards(data.characters);
     }
   } catch (error) {
     console.log(error);
@@ -31,13 +31,12 @@ function createCards(data) {
   data.forEach((character) => {
     const CardHTML = `<div class = card>
         <h1 class = "name"> Character: ${character.name} </h1>
-        <img class = "picture" src="${character.image_url}">
-        <h2 class = "clan"> Clan: ${character.clan} </h2>
-        <h2 class = "tailedBeasts"> Beasts: ${character.tailedBeast} </h2>
-        <h2 class = "nature"> Nature: ${character.nature} </h2>
-        <p class = "kekkeiGenkai"> KekkiGenkai: ${character.kekkeiGenkai} </p>
-        <p class = "class"> Class: ${character.classification} </p>
-        <p class = "occupation"> Occupation: ${character.occupation} </p>
+        <h2 class = "clan"> Clan: ${character.personal.clan} </h2>
+        <img class="image" src="${character.image_url}">
+        <h2 class = "tailedBeasts"> Beasts: ${character.personal.tailedBeast} </h2>
+        <p class = "kekkeiGenkai"> KekkiGenkai: ${character.personal.kekkeiGenkai} </p>
+        <p class = "class"> Class: ${character.personal.classification} </p>
+        <p class = "occupation"> Occupation: ${character.personal.occupation} </p>
         <p tools = "tools"> Tools: ${character.tools} </p>
         </div>`;
     DomSelectors.container.insertAdjacentHTML("beforeend", CardHTML);
