@@ -29,7 +29,7 @@ function createCards(data) {
   DomSelectors.container.innerHTML = "";
 
   data.forEach((character) => {
-    const CardHTML = `<div class = card>
+    const CardHTML = `<div class = "card display:flex">
         <h1 class = "name"> Character: ${character.name} </h1>
         <h2 class = "clan"> Clan: ${character.personal.clan} </h2>
         <img class="image" src="${character.image_url}">
@@ -37,7 +37,6 @@ function createCards(data) {
         <p class = "kekkeiGenkai"> KekkiGenkai: ${character.personal.kekkeiGenkai} </p>
         <p class = "class"> Class: ${character.personal.classification} </p>
         <p class = "occupation"> Occupation: ${character.personal.occupation} </p>
-        <p tools = "tools"> Tools: ${character.tools} </p>
         </div>`;
     DomSelectors.container.insertAdjacentHTML("beforeend", CardHTML);
   });
