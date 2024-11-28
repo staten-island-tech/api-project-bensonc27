@@ -2,9 +2,7 @@ import "../CSS/style.css";
 
 async function getData() {
   try {
-    const response = await fetch(
-      "https://dattebayo-api.onrender.com/characters"
-    );
+    const response = await fetch("https://ghibliapi.vercel.app/films");
 
     if (response.status != 200) {
       throw new Error(response);
@@ -28,16 +26,15 @@ const DomSelectors = {
 function createCards(data) {
   DomSelectors.container.innerHTML = "";
 
-  data.forEach((character) => {
+  data.forEach((movie) => {
     const CardHTML = `<div class = card>
-        <h1 class = "name"> Character: ${character.name} </h1>
-        <h2 class = "clan"> Clan: ${character.personal.clan} </h2>
-        <img class="image" src="${character.image_url}">
-        <h2 class = "tailedBeasts"> Beasts: ${character.personal.tailedBeast} </h2>
-        <p class = "kekkeiGenkai"> KekkiGenkai: ${character.personal.kekkeiGenkai} </p>
-        <p class = "class"> Class: ${character.personal.classification} </p>
+        <h1 class = "title"> Title: ${movie.name} </h1>
+        <h2 class = "otitle"> Original Title: ${movie.original_title} </h2>
+        <img class="image" src="${movie.image_url}">
+        <p class = "producer"> Producer: ${movie.producer} </p>
+        <p class = "date"> Release Date: ${movie.release_date} </p>
         <p class = "occupation"> Occupation: ${character.personal.occupation} </p>
-        <p tools = "tools"> Tools: ${character.tools} </p>
+        <p class = "desc"> Description: ${movie.description} </p>
         </div>`;
     DomSelectors.container.insertAdjacentHTML("beforeend", CardHTML);
   });
