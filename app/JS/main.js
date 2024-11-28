@@ -9,7 +9,7 @@ async function getData() {
     } else {
       const data = await response.json();
       console.log(data);
-      createCards(data.characters);
+      createCards(data.movie);
     }
   } catch (error) {
     console.log(error);
