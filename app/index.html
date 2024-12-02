@@ -7,14 +7,17 @@
     <title>Vite App</title>
   </head>
 
-  <body class="body p-0 m-0 box-border">
-   <form>
-      <label for="Filter">Filters:</label>
-      <input type="text" id="search" name="search" placeholder="filter">
-      <input type="submit" id="button" value="submit">
-    </form>
+  <body class="body justify-center text-black bg-green-200 p-0 m-0 box-border items-center bg-pink-100">
 
-    <div class="container flex flex-wrap "></div>
+    <div class="join flex justify-center" >
+      <label class="title mt-3 mr-1" for="search">Movie Title:</label>
+      <input type="text" id="search" name="search" class="input bg-slate-300 text-brown-800 border-slate-500 join-item" placeholder="Movie Title">
+      <button id="button" class="btn join-item bg-rose-700 text-white rounded-r-full">Submit</button>
+    </div>
+
+ 
+
+    <div class="container justify-evenly flex flex-wrap"></div>
     <script type="module" src="JS/main.js"></script>
   </body>
 </html>
