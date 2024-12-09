@@ -47,11 +47,19 @@ filtData();
 function filterNames(movies) {
   DomSelectors.button.addEventListener("click", function (event) {
     event.preventDefault();
-    const name = movies.filter(
-      (movie) => movie.title == DomSelectors.search.value
-    );
-    createCards(name);
-    reset;
+    const searchvalue = DomSelectors.search.value;
+
+    if (searchvalue) {
+      const name = movies.filter((movie) => movie.title == searchvalue);
+      console.log(name);
+      if (name.length === 0) {
+        return console.log("There is nothing for this value.");
+      }
+      createCards(name);
+      reset();
+    } else {
+      console.log("There was no search input.");
+    }
   });
 }
 
@@ -64,7 +72,7 @@ function createCards(data) {
 
   data.forEach((movie) => {
     const CardHTML = `
-  <div class="card bg-amber-100 w-3/12 lg:w-1/10 md:w-3/10 sm:w-6/10 shadow-xl ml-8 mt-8">
+  <div class="card mb-14 bg-amber-100 sm:w-10/12 md:w-7/12 lg:w-5/12 xl:w-3/12 items-center shadow-xl ml-8">
   <figure>
     <img class= "image "
       src="${movie.image}" alt="${movie.title} Picture"

@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card:hover{
+opacity: 1;
+transform: scale(1.1);
+transition: 500ms ease-in-out;
+}
+
+.card:not(:hover){
+opacity: 0.3;
+transition: 500ms ease-in-out
+}
