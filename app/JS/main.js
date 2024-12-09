@@ -72,7 +72,7 @@ function createCards(data) {
 
   data.forEach((movie) => {
     const CardHTML = `
-  <div class="card mb-14 bg-amber-100 sm:w-10/12 md:w-7/12 lg:w-5/12 xl:w-3/12 items-center shadow-xl ml-8">
+  <div class="card mb-14 bg-amber-100 sm:w-10/12 md:w-7/12 lg:w-5/12 xl:w-3/12 items-center shadow-xl mt-4 ml-8">
   <figure>
     <img class= "image "
       src="${movie.image}" alt="${movie.title} Picture"
